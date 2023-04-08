@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-lg-4
+                .d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark(style='height:100vh;')
+                    a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href='/')
+                        svg.bi.me-2(width='40' height='20')
+                        span.fs-4 Personal Relationship Manager
+                    hr
+                    ul.nav.nav-pills.flex-column.mb-auto
+                        li.nav-item
+                            a.nav-link.text-white(href='/' aria-current='page')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Contacts
+                        li
+                            a.nav-link.text-white(href='/reminders')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Reminders
+                        li
+                            a.nav-link.active(href='/company')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Companies
+            .col-lg-8
+                h1= title
+
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Name
+                            th(scope='col') Industry
+                            th(scope='col') Notes
+                    tbody
+                        each t in data
+                            tr
+                                th(scope='row') #{t.company_id}
+                                td #{t.company_name}
+                                td #{t.industry}
+                                td #{t.notes}

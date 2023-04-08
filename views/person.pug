@@ -1,0 +1,152 @@
+extends layout
+
+block content
+    .container
+        .row
+            .col-lg-4
+                .d-flex.flex-column.flex-shrink-0.p-3.text-white.bg-dark(style='min-height:100%;')
+                    a.d-flex.align-items-center.mb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href='/')
+                        svg.bi.me-2(width='40' height='20')
+                        span.fs-4 Personal Relationship Manager
+                    hr
+                    ul.nav.nav-pills.flex-column.mb-auto
+                        li.nav-item
+                            a.nav-link.active(href='/' aria-current='page')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Contacts
+                        li
+                            a.nav-link.text-white(href='/reminders')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Reminders
+                        li
+                            a.nav-link.text-white(href='/company')
+                                svg.bi.me-2(width='16' height='16')
+                                |           Companies
+            .col-lg-8
+                h1= title
+                .container
+                    .row
+                        .col
+                            h3.pb-2.border-bottom General Information
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Name
+                            th(scope='col') Email
+                            th(scope='col') Phone Number
+                            th(scope='col') Job
+                            th(scope='col') Company
+                    tbody
+                        tr
+                            th(scope='row') #{data.contact_id}
+                            td #{data.contact_name}
+                            td #{data.email}
+                            td #{data.phone_number}
+                            td #{data.job}
+                            td #{data.company_name}
+                .container
+                    .row
+                        .col
+                            h3.pb-2.border-bottom Detailed Information
+                        .col-sm-2
+                            a.btn.btn-primary(href='#')
+                                | Edit
+                #hanging-icons.container
+                    .row.row-cols-2
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Name
+                                p
+                                    | #{data.contact_name}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Email
+                                p
+                                    | #{data.email}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Phone Number
+                                p
+                                    | #{data.phone_number}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Job
+                                p
+                                    | #{data.job}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Company
+                                p
+                                    | #{data.company_name}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Relationship
+                                p
+                                    | #{data.relationship_type}
+                        .col.d-flex.align-items-start
+                            div
+                                h6 Notes
+                                p
+                                    | #{data.notes}
+
+                .container
+                    .row
+                        .col
+                            h3.pb-2.border-bottom Acquaintances
+                table#table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Relationship
+                            th(scope='col') Name
+                            th(scope='col') Email
+                            th(scope='col') Phone Number
+                            th(scope='col') Job
+                    tbody
+                        each t in aData
+                            tr
+                                th(scope='row') #{t.contact_id}
+                                td #{t.acquaintance_type}
+                                td #{t.contact_name}
+                                td #{t.email}
+                                td #{t.phone_number}
+                                td #{t.job}
+
+                .container
+                    .row
+                        .col
+                            h3.pb-2.border-bottom Interactions
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Date
+                            th(scope='col') Location
+                            th(scope='col') Notes
+                    tbody
+                        each t in iData
+                            tr
+                                th(scope='row') #{t.interaction_id}
+                                td #{t.date_time}
+                                td #{t.location}
+                                td #{t.notes}
+
+                .container
+                    .row
+                        .col
+                            h3.pb-2.border-bottom Reminders
+                table.table
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') Date
+                            th(scope='col') Notes
+                    tbody
+                        each t in rData
+                            tr
+                                th(scope='row') #{t.reminder_id}
+                                td #{t.date_time}
+                                td #{t.notes}
+
+    script(src="/js/tableClick.js")
