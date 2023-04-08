@@ -30,3 +30,6 @@ and said contacts.
 ## Info
 
 The database dump can be found in /db_dump and can be executed to recreate the database used for this project
+
+## Project demonstration
+https://www.youtube.com/watch?v=agk1dVbMLcU
